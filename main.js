@@ -40,6 +40,7 @@ function bridgeCreate(message)
     });
 }
 
+
 client.on('message', message => { // for commands
     if(!message.content.startsWith(prefix) || message.author.bot) return;
 
