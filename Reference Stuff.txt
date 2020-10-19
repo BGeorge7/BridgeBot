@@ -1,0 +1,108 @@
+const Discord = require('discord.js');
+
+const client = new Discord.Client();
+
+const prefix = '-';
+const memeText = 'What the fuck did you just fucking say about me, you little bitch? I\'ll have you know I graduated top of my class in the Navy Seals, and I\'ve been involved in numerous secret raids on Al-Quaeda, and I have over 300 confirmed kills. I am trained in gorilla warfare and I\'m the top sniper in the entire US armed forces. You are nothing to me but just another target. I will wipe you the fuck out with precision the likes of which has never been seen before on this Earth, mark my fucking words. You think you can get away with saying that shit to me over the Internet? Think again, fucker. As we speak I am contacting my secret network of spies across the USA and your IP is being traced right now so you better prepare for the storm, maggot. The storm that wipes out the pathetic little thing you call your life. You\'re fucking dead, kid. I can be anywhere, anytime, and I can kill you in over seven hundred ways, and that\'s just with my bare hands. Not only am I extensively trained in unarmed combat, but I have access to the entire arsenal of the United States Marine Corps and I will use it to its full extent to wipe your miserable ass off the face of the continent, you little shit. If only you could have known what unholy retribution your little "clever" comment was about to bring down upon you, maybe you would have held your fucking tongue. But you couldn\'t, you didn\'t, and now you\'re paying the price, you goddamn idiot. I will shit fury all over you and you will drown in it. You\'re fucking dead, kiddo.';
+
+
+client.once('read', () => {
+    console.log('memebot online');
+});
+
+client.on('message', message => { // for commands
+    if(!message.content.startsWith(prefix) || message.author.bot) return;
+
+    const args = message.content.slice(prefix.length).split(/ +/); //splices the argument out with the prefix, including a space in between
+    const command = args.shift().toLowerCase();
+
+    if(command === 'unga'){
+        if (message.author.toString() ==='<@209331286869934080>')
+        {
+            message.channel.send('John if you don\'t shut the fuck up');
+        }
+        else if (message.author.toString() ==='<@154443230912577537>')
+        {
+            message.channel.send('shut the fuck up ape');
+        }
+        else if(message.author.toString() === '<@142752717125844993>')
+        {
+            message.channel.send("**_aluminium_**");
+        }
+        else
+        {
+            message.channel.send('bunga');
+        }
+        console.log(message.author.toString());
+    }
+    if(command === 'wendys')
+    {
+        message.channel.send('wen deez nuts go down your throat :joy:');
+    }
+    if(command === 'stevejobs')
+    {
+        message.channel.send('https://www.youtube.com/watch?v=NwoCI72_USg');
+    }
+
+    if(command === 'pfp') //pfp getter
+    {
+        pfp = message.author.avatarURL.toString();
+        //message.channel.send(message.member.user.avatarURL());
+        let pfpString = message.author.avatarURL().toString(); //gets the url string
+        let pfpStringLength = pfpString.length; //length of the string
+        let pfpStringNPng = pfpString.substring(0, pfpStringLength-4); //substring with webp removed
+
+        pfpStringNPng = pfpStringNPng + "png";
+
+        pfpStringNPng = pfpStringNPng.replace("https", "http"); //make link http
+
+        const fs = require('fs');
+        const fetch = require('node-fetch');
+
+        async function download() {
+            const response = await fetch(pfpStringNPng);
+            const buffer = await response.buffer();
+            fs.writeFile(".\\user_pfp\\" + message.author.id.toString() + ".png", buffer, () => 
+                console.log('Downloaded image for: ' + message.author.id.toString()));
+        
+        }
+
+        download(); //calls the download image function
+
+        const spawn = require("child_process").spawn;
+        const pythonProcess = spawn('python',["bridge_paste.py", ".\\user_pfp\\" + message.author.id.toString() + ".png"]);
+
+        pythonProcess.stdout.on('data', (data) => {
+            const attachment = new Discord.MessageAttachment(".\\Bridged_Images\\Bridged"+ message.author.id.toString()+ ".png");
+            message.channel.send(attachment);
+        });
+
+    }
+
+    
+    if(command === 'fuck'){
+        message.channel.send(memeText);
+    }
+
+});
+
+client.on('message', message => { // for n
+    if(message.content.startsWith(prefix) || message.author.bot) return;
+
+    const command = message.content.toLowerCase();
+
+    if(command === 'n' || command === 'ni' || command === 'nig' || command === 'nigg'){
+        message.channel.send('<:FeelsWeirdMan:700131181588643902>');
+    }
+    if(command === 'pain'){
+        message.channel.send('<:painchamp:764605948253044736>');
+        message.delete();
+    }
+    if(command === 'bitch'){
+        message.channel.send(memeText);
+    }
+
+});
+
+client.login('NzY1ODA1MTM3OTk0MTg2Nzgy.X4aJnA.18Dbx7iOf-UF3odkWhu8vF3GWjw');
+

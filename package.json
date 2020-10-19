@@ -1,0 +1,24 @@
+{
+  "name": "bridgebot",
+  "version": "1.0.0",
+  "description": "Retrieves the users profile picture and pastes it into the bridge using the pillow python library",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BGeorge7/BridgeBot.git"
+  },
+  "keywords": [
+    "bridge",
+    "discord",
+    "bot"
+  ],
+  "author": "BGeorge7",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BGeorge7/BridgeBot/issues"
+  },
+  "homepage": "https://github.com/BGeorge7/BridgeBot#readme"
+}
